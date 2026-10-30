@@ -1,4 +1,5 @@
 import { scrapeVideoData } from '@/services/tiktok'
+import { BRAND } from '../branding'
 import { Context } from 'hono'
 import { formatNumber } from './format'
 import { env } from 'hono/adapter'
@@ -137,7 +138,7 @@ export default async function generateActivity(param: string, c: Context) {
     language: null,
     visibility: 'public',
     application: {
-      name: 'fxTikTok',
+      name: BRAND.name,
       website: 'https://github.com/okdargy/fxTikTok'
     },
     media_attachments: [...media],

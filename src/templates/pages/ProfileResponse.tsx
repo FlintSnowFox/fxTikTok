@@ -1,4 +1,5 @@
 import MetaHelper from '../../util/metaHelper'
+import { BRAND } from '../../branding'
 import { UserInfo } from '../../types/Web'
 import { Context } from 'hono'
 import { env } from 'hono/adapter'
@@ -15,7 +16,7 @@ export function ProfileResponse(data: UserInfo, c: Context): JSX.Element {
         [
           {
             name: 'og:site_name',
-            content: 'fxTikTok'
+            content: BRAND.name
           },
           {
             name: 'og:title',
@@ -23,7 +24,7 @@ export function ProfileResponse(data: UserInfo, c: Context): JSX.Element {
           },
           {
             name: 'theme-color',
-            content: '#ff0050' // TikTok's theme color
+            content: BRAND.color
           },
           {
             name: 'twitter:site',

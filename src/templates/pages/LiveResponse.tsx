@@ -1,4 +1,5 @@
 import { Context } from 'hono'
+import { BRAND } from '../../branding'
 import MetaHelper from '@/util/metaHelper'
 import { LiveRoom } from '@/types/Live'
 import { formatNumber, formatTime } from '@/util/format'
@@ -30,7 +31,11 @@ export function LiveResponse(data: LiveRoom, c: Context): JSX.Element {
           },
           {
             name: 'theme-color',
-            content: '#ff0050'
+            content: BRAND.color
+          },
+          {
+            name: 'og:site_name',
+            content: BRAND.name
           },
           {
             name: 'twitter:site',

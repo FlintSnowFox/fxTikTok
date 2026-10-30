@@ -1,4 +1,5 @@
 import { Context } from 'hono'
+import { BRAND } from '../../branding'
 import MetaHelper from '../../util/metaHelper'
 
 export function WarningResponse(title: string, reason: string, c: Context): JSX.Element {
@@ -11,7 +12,11 @@ export function WarningResponse(title: string, reason: string, c: Context): JSX.
         },
         {
           name: 'theme-color',
-          content: '#f7c500'
+          content: BRAND.warningColor
+        },
+        {
+          name: 'og:site_name',
+          content: BRAND.name
         },
         {
           name: 'og:description',

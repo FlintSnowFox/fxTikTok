@@ -1,4 +1,5 @@
 import MetaHelper from '../../util/metaHelper'
+import { BRAND } from '../../branding'
 import { ItemStruct } from '../../types/Web'
 import { Context } from 'hono'
 import { env } from 'hono/adapter'
@@ -118,7 +119,7 @@ export function VideoResponse(data: ItemStruct, addDesc: boolean, hq: boolean, c
         [
           {
             name: 'og:site_name',
-            content: 'fxTikTok'
+            content: BRAND.name
           },
           {
             name: 'og:title',
@@ -126,7 +127,7 @@ export function VideoResponse(data: ItemStruct, addDesc: boolean, hq: boolean, c
           },
           {
             name: 'theme-color',
-            content: '#ff0050' // TikTok's theme color
+            content: BRAND.color
           },
           {
             name: 'twitter:site',
