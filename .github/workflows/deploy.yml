@@ -1,0 +1,21 @@
+name: Deploy
+
+on:
+  push:
+    branches: [hono-rewrite]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: 
+      - run: npm install --no-package-lock
+      - uses: 
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy --minify src/index.ts
