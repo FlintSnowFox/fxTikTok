@@ -35,7 +35,15 @@ export default function MetaHelper(
   return (
     <html lang='en'>
       <head>
-        {tags.map((tag) => (tag.content ? <meta property={tag.name} content={tag.content} /> : null))}
+        {tags.map((tag) => {
+          if (!tag.content) return null
+          // Discord only reads theme-color from a name attribute.
+          return tag.name === 'theme-color' ? (
+            <meta name={tag.name} content={tag.content} />
+          ) : (
+            <meta property={tag.name} content={tag.content} />
+          )
+        })}
         {alternate ? <link rel='alternate' href={alternateUrl.toString()} type='application/json+oembed' /> : null}
         {awemeId ? <link rel='alternate' type='application/activity+json' href={activityUrl?.toString()} /> : null}
       </head>
