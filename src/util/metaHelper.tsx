@@ -17,13 +17,14 @@ export default function MetaHelper(
   activityPage?: number
 ): JSX.Element {
   const { OFF_LOAD } = env(c) as { OFF_LOAD: string }
+  // Served by this Worker, not the offload server, so embeds carry this deployment's branding.
   const page = normalizePage(activityPage || c.req.query('page'))
   const activityId = awemeId ? buildActivityId(awemeId, { hq, addDesc, page }) : null
   const activityUrl = activityId
-    ? new URL((OFF_LOAD || 'https://offload.tnktok.com') + '/users/' + 'username' + '/statuses/' + activityId)
+    ? new URL('/users/username/statuses/' + activityId, c.req.url)
     : null
 
-  let alternateUrl = new URL((OFF_LOAD || 'https://offload.tnktok.com') + '/generate/alternate')
+  let alternateUrl = new URL('/generate/alternate', c.req.url)
 
   if (alternate) {
     for (const key in alternate) {
